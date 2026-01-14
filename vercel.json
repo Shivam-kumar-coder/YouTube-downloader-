@@ -1,5 +1,5 @@
 {
-  "name": "ytdownloader-pro",
+  "name": "vidsave",
   "version": 2,
   "public": true,
   "builds": [
@@ -10,11 +10,23 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "/index.html",
-      "headers": {
-        "Cache-Control": "public, max-age=3600"
-      }
+      "src": "/",
+      "dest": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
     }
   ]
 }
