@@ -102,7 +102,7 @@
                         onclick="analyzeVideo()"
                         class="download-btn px-8 py-4 rounded-xl font-bold text-lg pulse-animation"
                     >
-                        <i class="fas fa-download mr-2"></i> DOWNLOAD NOW
+                        <i class="fas fa-download mr-2"></i> ANALYZE & DOWNLOAD
                     </button>
                 </div>
             </div>
@@ -134,7 +134,7 @@
 
                         <!-- Download Options -->
                         <div class="md:w-2/3">
-                            <h3 id="videoTitle" class="text-xl font-bold mb-6 text-left"></h3>
+                            <h3 id="videoTitle" class="text-xl font-bold mb-6 text-left">Video Ready to Download</h3>
 
                             <div class="space-y-4">
                                 <button onclick="downloadVideo('mp4', '720p')" class="download-btn w-full p-4 rounded-xl text-lg font-bold">
@@ -146,12 +146,12 @@
                                 </button>
 
                                 <button onclick="downloadVideo('mp3', '128kbps')" class="download-btn w-full p-4 rounded-xl text-lg font-bold">
-                                    <i class="fas fa-music mr-3"></i> DOWNLOAD MP3 (Audio)
+                                    <i class="fas fa-music mr-3"></i> DOWNLOAD MP3 (High Quality Audio)
                                 </button>
                             </div>
 
                             <p class="text-gray-400 text-sm mt-6">
-                                <i class="fas fa-info-circle mr-2"></i> Download will start immediately in your browser
+                                <i class="fas fa-info-circle mr-2"></i> Download will start automatically in your browser
                             </p>
                         </div>
                     </div>
@@ -210,7 +210,7 @@
                 <div class="text-center">
                     <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
                     <h3 class="font-bold mb-2">Paste & Analyze</h3>
-                    <p class="text-gray-400">Paste link above and click Download Now button</p>
+                    <p class="text-gray-400">Paste link above and click Analyze & Download button</p>
                 </div>
 
                 <div class="text-center">
@@ -247,7 +247,7 @@
             </div>
 
             <p class="text-gray-500 text-sm">
-                © 2024 YTDownloader Pro. This tool is not affiliated with YouTube.
+                © 2025 YTDownloader Pro. This tool is not affiliated with YouTube.
             </p>
         </div>
     </footer>
@@ -261,17 +261,10 @@
             let url = urlInput.value.trim();
 
             if (!url) {
-                alert('Please paste a YouTube URL');
+                alert('Please paste a YouTube URL first!');
                 return;
             }
 
-            // If user doesn't enter URL, use default
-            if (url === '') {
-                url = 'https://youtu.be/dQw4w9WgXcQ';
-                urlInput.value = url;
-            }
-
-            // Extract video ID
             const videoId = extractVideoId(url);
             if (!videoId) {
                 alert('Invalid YouTube URL. Please check and try again.');
@@ -280,23 +273,19 @@
 
             currentVideoId = videoId;
 
-            // Show thumbnail immediately
-            const thumb = document.getElementById('videoThumb');
-            thumb.src = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+            // Show thumbnail
+            document.getElementById('videoThumb').src = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
 
-            // Show video title
-            document.getElementById('videoTitle').textContent = 'YouTube Video Ready to Download';
+            // Optional: Show title placeholder (real title ke liye extra API call chahiye)
+            document.getElementById('videoTitle').textContent = 'Video Ready – Choose Format Below';
 
-            // Show results section
             document.getElementById('results').classList.remove('hidden');
             document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
 
-            // Show success message
-            showNotification('Video ready! Click download button to start download.');
+            showNotification('Video analyzed successfully! Select your format to download.');
         }
 
         function extractVideoId(url) {
-            // Multiple URL patterns supported
             const patterns = [
                 /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?|shorts)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/,
                 /youtube\.com\/watch\?v=([^&]{11})/,
@@ -306,92 +295,86 @@
 
             for (const pattern of patterns) {
                 const match = url.match(pattern);
-                if (match && match[1]) {
-                    return match[1];
-                }
+                if (match && match[1]) return match[1];
             }
             return null;
         }
 
         async function downloadVideo(type, quality) {
             if (!currentVideoId) {
-                alert('Please analyze a video first');
+                alert('Please analyze a video first!');
                 return;
             }
 
-            showNotification('Starting download... Please wait.');
+            showNotification('Preparing real download... Please wait (5-30 seconds depending on video size)');
 
             const params = new URLSearchParams({
                 videoId: currentVideoId,
-                type,
-                quality
+                type: type,
+                quality: quality
             });
 
             try {
                 const response = await fetch(`/api/download?${params.toString()}`);
+
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    const errorText = await response.text();
+                    throw new Error(`Download failed: ${response.status} - ${errorText}`);
                 }
 
                 const blob = await response.blob();
-                const downloadUrl = URL.createObjectURL(blob);
+                const url = URL.createObjectURL(blob);
+
                 const a = document.createElement('a');
-                a.href = downloadUrl;
-                a.download = type === 'mp3' ? `\( {currentVideoId}.mp3` : ` \){currentVideoId}.mp4`;
+                a.href = url;
+                a.download = type === 'mp3' 
+                    ? `${currentVideoId}_audio.mp3` 
+                    : `\( {currentVideoId}_ \){quality}.mp4`;
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
-                URL.revokeObjectURL(downloadUrl);
+                URL.revokeObjectURL(url);
 
-                showNotification('Download started! Check your downloads.');
-            } catch (error) {
-                showNotification('Error downloading. Try again or check console.');
-                console.error('Download error:', error);
+                showNotification('Download started successfully! Check your Downloads folder.');
+            } catch (err) {
+                showNotification('Sorry, download failed. Try a different video or check your connection.');
+                console.error('Download error:', err);
             }
         }
 
         function showNotification(message) {
-            // Create notification element
-            const notification = document.createElement('div');
-            notification.className = 'fixed top-4 right-4 bg-green-600 text-white px-6 py-3 rounded-xl shadow-2xl z-50';
-            notification.innerHTML = `
-                <div class="flex items-center gap-3">
-                    <i class="fas fa-check-circle"></i>
-                    <span>${message}</span>
-                </div>
-            `;
+            const notif = document.createElement('div');
+            notif.className = 'fixed top-4 right-4 bg-green-600 text-white px-6 py-3 rounded-xl shadow-2xl z-50 transform transition-all';
+            notif.innerHTML = `<div class="flex items-center gap-3"><i class="fas fa-check-circle"></i><span>${message}</span></div>`;
+            document.body.appendChild(notif);
 
-            document.body.appendChild(notification);
-
-            // Remove after 3 seconds
             setTimeout(() => {
-                if (notification.parentNode) {
-                    notification.parentNode.removeChild(notification);
-                }
-            }, 3000);
+                notif.style.opacity = '0';
+                setTimeout(() => notif.remove(), 500);
+            }, 4000);
         }
 
-        // Auto-detect URL in clipboard
-        document.getElementById('videoUrl').addEventListener('focus', function() {
-            // Try to paste from clipboard automatically
-            navigator.clipboard.readText().then(text => {
+        // Auto-paste from clipboard on focus
+        document.getElementById('videoUrl').addEventListener('focus', async function () {
+            try {
+                const text = await navigator.clipboard.readText();
                 if (text.includes('youtube.com') || text.includes('youtu.be')) {
-                    this.value = text;
+                    this.value = text.trim();
                 }
-            }).catch(() => {
-                // Clipboard access not granted, ignore
-            });
+            } catch (err) {
+                // Clipboard permission denied – ignore
+            }
         });
 
-        // Allow Enter key
-        document.getElementById('videoUrl').addEventListener('keypress', function(e) {
+        // Enter key to analyze
+        document.getElementById('videoUrl').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 analyzeVideo();
             }
         });
 
-        // Initialize with example URL
-        window.onload = function() {
+        // Focus input on load
+        window.onload = function () {
             document.getElementById('videoUrl').focus();
         };
     </script>
