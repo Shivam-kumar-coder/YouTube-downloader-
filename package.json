@@ -1,0 +1,16 @@
+{
+  "name": "streamsaver-pro",
+  "version": "2.0.0",
+  "description": "Free YouTube Video Downloader - Download YouTube videos in MP4 and MP3 format",
+  "keywords": ["youtube", "downloader", "mp3", "mp4", "shorts", "video"],
+  "homepage": "https://streamsaver-pro.vercel.app",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "node server.js",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
