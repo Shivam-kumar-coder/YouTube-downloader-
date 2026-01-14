@@ -1,12 +1,12 @@
 {
-  "name": "tubegrab-pro",
+  "name": "ytdownloader-pro",
   "version": "1.0.0",
-  "description": "Free YouTube Video Downloader - Download YouTube videos in MP4 and MP3 format",
+  "description": "Instant YouTube Video Downloader - No waiting, direct downloads",
   "main": "index.html",
   "scripts": {
     "start": "echo 'Open index.html in browser'"
   },
-  "keywords": ["youtube", "downloader", "mp3", "mp4", "video", "free"],
-  "author": "TubeGrab Pro",
+  "keywords": ["youtube", "downloader", "instant", "mp3", "mp4"],
+  "author": "YTDownloader Pro",
   "license": "MIT"
 }
