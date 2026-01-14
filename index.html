@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>StreamSaver | Free YouTube Video & MP3 Downloader</title>
+    <meta name="description" content="Download YouTube videos in MP4 HD and convert YouTube to MP3 high quality for free. Fast, safe and easy to use online downloader.">
+    <meta name="keywords" content="YouTube downloader, YT to MP3, YouTube video download, MP4 converter, free video saver, download youtube hindi">
+    <meta name="author" content="StreamSaver">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        .gradient-bg { background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%); }
+        .card-hover:hover { transform: translateY(-5px); transition: 0.3s; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <nav class="bg-white py-4 shadow-sm border-b">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i class="fab fa-youtube text-3xl text-red-600"></i>
+                <span class="text-2xl font-black tracking-tighter text-gray-900">StreamSaver</span>
+            </div>
+            <div class="hidden md:flex gap-6 font-medium text-gray-600">
+                <a href="#" class="hover:text-red-600">MP3 Converter</a>
+                <a href="#" class="hover:text-red-600">Video Downloader</a>
+                <a href="#" class="hover:text-red-600">FAQ</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="gradient-bg py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6">YouTube Video & MP3 Downloader</h1>
+            <p class="text-red-100 text-lg mb-10">Paste the link below to convert and download your favorite content instantly.</p>
+            
+            <div class="relative max-w-3xl mx-auto flex flex-col md:flex-row gap-2 bg-white p-2 rounded-2xl shadow-2xl">
+                <input id="videoLink" type="text" placeholder="Paste YouTube link here (e.g. https://youtube.com/watch?v=...)" 
+                       class="w-full p-4 outline-none text-gray-700 text-lg rounded-xl">
+                <button onclick="processLink()" class="bg-black text-white px-10 py-4 rounded-xl font-bold hover:bg-gray-800 transition-all flex items-center justify-center gap-2">
+                    <span>Download</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            <p class="text-red-200 mt-4 text-sm font-medium">No registration required. 100% Free & Secure.</p>
+        </div>
+    </section>
+
+    <div class="max-w-4xl mx-auto my-8 p-2 border-2 border-dashed border-gray-300 rounded-lg text-center text-gray-400">
+        <p class="text-xs uppercase mb-1">Sponsored Content</p>
+        <div class="h-24 flex items-center justify-center">
+            [ यहाँ अपना Ad कोड पेस्ट करें - Adsterra Banner ]
+        </div>
+    </div>
+
+    <div id="results" class="hidden container mx-auto px-6 py-10">
+        <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 flex flex-col md:flex-row">
+            <div class="md:w-1/3 bg-gray-200 h-64 md:h-auto flex items-center justify-center relative">
+                <img id="thumb" src="" alt="Thumbnail" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+                    <i class="fas fa-play-circle text-6xl text-white opacity-80"></i>
+                </div>
+            </div>
+            <div class="md:w-2/3 p-8">
+                <h3 id="videoTitle" class="text-2xl font-bold mb-6 line-clamp-2">Video Title Loading...</h3>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="card-hover p-4 border rounded-2xl bg-red-50 border-red-100">
+                        <div class="flex items-center gap-3 mb-3">
+                            <i class="fas fa-video text-red-600"></i>
+                            <span class="font-bold">Video MP4</span>
+                        </div>
+                        <button onclick="handleDownload('MP4')" class="w-full bg-red-600 text-white py-2 rounded-lg font-bold shadow-md">Get Video</button>
+                    </div>
+
+                    <div class="card-hover p-4 border rounded-2xl bg-blue-50 border-blue-100">
+                        <div class="flex items-center gap-3 mb-3">
+                            <i class="fas fa-music text-blue-600"></i>
+                            <span class="font-bold">Audio MP3</span>
+                        </div>
+                        <button onclick="handleDownload('MP3')" class="w-full bg-blue-600 text-white py-2 rounded-lg font-bold shadow-md">Get Audio</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="container mx-auto px-6 py-20">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">Why Choose StreamSaver?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="text-center p-6">
+                <div class="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h4 class="font-bold text-xl mb-2">High Speed</h4>
+                <p class="text-gray-500 text-sm">Convert and download videos in just a few seconds.</p>
+            </div>
+            <div class="text-center p-6">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                    <i class="fas fa-infinity"></i>
+                </div>
+                <h4 class="font-bold text-xl mb-2">Unlimited Downloads</h4>
+                <p class="text-gray-500 text-sm">No limits on how many videos you can save per day.</p>
+            </div>
+            <div class="text-center p-6">
+                <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                    <i class="fas fa-check-double"></i>
+                </div>
+                <h4 class="font-bold text-xl mb-2">High Quality</h4>
+                <p class="text-gray-500 text-sm">Download up to 4K video resolution and 320kbps MP3.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-12 px-6">
+        <div class="container mx-auto text-center">
+            <div class="flex justify-center gap-2 mb-4">
+                <i class="fab fa-youtube text-2xl text-red-500"></i>
+                <span class="text-xl font-bold text-white uppercase tracking-wider">StreamSaver</span>
+            </div>
+            <p class="mb-6 max-w-lg mx-auto text-sm italic">Note: We do not host any copyrighted content. This tool is for personal use only.</p>
+            <div class="flex justify-center gap-6 text-sm mb-6">
+                <a href="#" class="hover:text-white">Contact Us</a>
+                <a href="#" class="hover:text-white">Privacy Policy</a>
+                <a href="#" class="hover:text-white">Terms of Service</a>
+            </div>
+            <p>&copy; 2026 StreamSaver. Created for Educational Purposes.</p>
+        </div>
+    </footer>
+
+    <script>
+        function processLink() {
+            const url = document.getElementById('videoLink').value;
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            const match = url.match(regExp);
+
+            if (match && match[2].length == 11) {
+                const videoId = match[2];
+                // Show Thumbnail and Results
+                document.getElementById('thumb').src = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+                document.getElementById('videoTitle').innerText = "YouTube Content Ready to Download";
+                document.getElementById('results').classList.remove('hidden');
+                
+                // Scroll to result
+                document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert("Please paste a valid YouTube Link, Bhai!");
+            }
+        }
+
+        function handleDownload(type) {
+            // STEP 1: Pehle Ad dikhao (Paisa kamane ka step)
+            // Yahan apne Ad Network ka 'Direct Link' dalna hai
+            window.open('YOUR_AD_DIRECT_LINK_HERE', '_blank');
+
+            // STEP 2: Phir download shuru karo
+            alert(`${type} Download started! Please check your ad window and then return here.`);
+        }
+    </script>
+</body>
+</html>
