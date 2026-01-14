@@ -1,43 +1,16 @@
 {
   "name": "streamsaver-pro",
-  "version": 2,
-  "public": true,
-  "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=()"
-        }
-      ]
-    }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  "version": "2.0.0",
+  "description": "Free YouTube Video Downloader - Download YouTube videos in MP4 and MP3 format",
+  "keywords": ["youtube", "downloader", "mp3", "mp4", "shorts", "video"],
+  "homepage": "https://streamsaver-pro.vercel.app",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "node server.js",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {},
+  "devDependencies": {}
 }
