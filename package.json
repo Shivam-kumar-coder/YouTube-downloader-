@@ -1,7 +1,5 @@
 {
-  "name": "streamsaver-api",
+  "name": "streamsaver-pro",
   "version": "1.0.0",
-  "dependencies": {
-    "ytdl-core": "latest"
-  }
+  "private": true
 }
