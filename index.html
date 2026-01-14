@@ -3,84 +3,378 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StreamSaver | HD YouTube & Shorts Downloader</title>
+    <title>StreamSaver Pro | Download YouTube Videos in MP4, MP3 HD Free</title>
     
-    <meta name="description" content="Download YouTube videos and shorts in HD MP4 or MP3 for free. StreamSaver is the fastest online video downloader.">
-    <meta name="keywords" content="youtube downloader, mp3 converter, shorts downloader, hd video download">
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
-
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Download YouTube videos, shorts, music in HD MP4 & MP3 format for free. Fastest online YouTube video downloader without registration.">
+    <meta name="keywords" content="youtube downloader, youtube to mp3, youtube to mp4, shorts downloader, video download, free youtube download">
+    <meta name="author" content="StreamSaver Pro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://streamsaver-pro.vercel.app/">
+    <meta property="og:title" content="StreamSaver Pro - Free YouTube Video Downloader">
+    <meta property="og:description" content="Download YouTube videos in HD MP4 & MP3 format instantly. No registration required.">
+    <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://streamsaver-pro.vercel.app/">
+    <meta property="twitter:title" content="StreamSaver Pro - Free YouTube Video Downloader">
+    <meta property="twitter:description" content="Download YouTube videos in HD MP4 & MP3 format instantly. No registration required.">
+    <meta property="twitter:image" content="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Custom Styles -->
     <style>
-        body { font-family: sans-serif; background-color: #0f172a; color: white; }
-        .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        .feature-icon {
+            background: rgba(220, 38, 38, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            display: inline-flex;
+        }
+        .video-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
     </style>
+    
+    <!-- Google Analytics (Optional) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script> -->
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <nav class="p-6 border-b border-white/10 flex justify-center">
-        <div class="flex items-center gap-2">
-            <i class="fab fa-youtube text-red-600 text-3xl"></i>
-            <span class="text-2xl font-bold tracking-tighter uppercase">StreamSaver</span>
+    <!-- Navigation -->
+    <nav class="py-6 px-4 border-b border-white/10">
+        <div class="container mx-auto max-w-6xl flex flex-col md:flex-row justify-between items-center gap-4">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <div class="bg-red-600 p-3 rounded-xl">
+                    <i class="fab fa-youtube text-white text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-black tracking-tight">StreamSaver <span class="text-red-500">Pro</span></h1>
+                    <p class="text-xs text-gray-400">Free YouTube Downloader</p>
+                </div>
+            </div>
+            
+            <!-- Features -->
+            <div class="flex flex-wrap gap-3 justify-center">
+                <span class="px-4 py-2 bg-red-900/30 rounded-full text-sm flex items-center gap-2">
+                    <i class="fas fa-bolt text-yellow-400"></i> Super Fast
+                </span>
+                <span class="px-4 py-2 bg-blue-900/30 rounded-full text-sm flex items-center gap-2">
+                    <i class="fas fa-shield-alt text-green-400"></i> Safe & Secure
+                </span>
+                <span class="px-4 py-2 bg-purple-900/30 rounded-full text-sm flex items-center gap-2">
+                    <i class="fas fa-infinity text-purple-400"></i> No Limits
+                </span>
+            </div>
         </div>
     </nav>
 
-    <main class="flex-grow flex flex-col items-center justify-center px-6 py-10">
-        <div class="max-w-3xl w-full text-center">
-            <h1 class="text-4xl md:text-6xl font-black mb-6">Save Content <span class="text-red-600">Instantly.</span></h1>
-            
-            <div class="glass-card p-2 rounded-2xl flex flex-col md:flex-row gap-2 max-w-2xl mx-auto mb-10">
-                <input id="videoUrl" type="text" placeholder="Paste YouTube link here..." 
-                       class="flex-1 bg-transparent p-4 outline-none text-white text-lg">
-                <button onclick="analyzeLink()" class="bg-red-600 px-10 py-4 rounded-xl font-bold hover:bg-red-700 transition">Analyze</button>
+    <!-- Hero Section -->
+    <main class="flex-grow py-12 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <!-- Hero Text -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">
+                    Download <span class="text-red-500">YouTube Videos</span><br>
+                    <span class="text-3xl md:text-5xl text-gray-300">In HD MP4 & MP3 Format</span>
+                </h1>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-10">
+                    Paste your YouTube link and download videos instantly. No registration required. Works on all devices.
+                </p>
             </div>
-            
-            <p id="errorBox" class="text-red-400 font-bold mb-6 hidden"></p>
 
-            <div id="resultCard" class="hidden glass-card p-8 rounded-3xl max-w-sm mx-auto">
-                <img id="thumb" class="w-full rounded-xl mb-6 shadow-xl" src="">
-                <div class="flex flex-col gap-4">
-                    <button onclick="getDownload('mp4')" class="w-full bg-white text-black py-4 rounded-xl font-bold hover:bg-slate-200 transition">Download MP4</button>
-                    <button onclick="getDownload('mp3')" class="w-full border-2 border-white/20 py-4 rounded-xl font-bold hover:bg-white/10 transition">Download MP3</button>
+            <!-- Download Box -->
+            <div class="glass-card p-2 rounded-2xl flex flex-col md:flex-row gap-2 max-w-3xl mx-auto mb-10">
+                <input 
+                    id="videoUrl" 
+                    type="text" 
+                    placeholder="Paste YouTube or Shorts link here (e.g., https://youtube.com/watch?v=...)" 
+                    class="flex-1 bg-transparent p-5 text-lg outline-none placeholder-gray-500"
+                >
+                <button 
+                    onclick="analyzeLink()" 
+                    class="btn-primary px-10 py-5 rounded-xl font-bold text-lg flex items-center justify-center gap-3"
+                >
+                    <i class="fas fa-search"></i> ANALYZE VIDEO
+                </button>
+            </div>
+
+            <!-- Error Message -->
+            <div id="errorBox" class="max-w-3xl mx-auto mb-10 hidden">
+                <div class="bg-red-900/30 border border-red-700 rounded-xl p-4 text-center">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>
+                    <span id="errorText" class="font-medium"></span>
+                </div>
+            </div>
+
+            <!-- Result Card -->
+            <div id="resultCard" class="hidden max-w-md mx-auto video-card">
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="relative mb-6">
+                        <img id="thumb" class="w-full rounded-xl shadow-2xl" src="" alt="Video Thumbnail">
+                        <div class="absolute top-4 right-4 bg-black/70 px-3 py-1 rounded-full text-sm">
+                            <i class="fas fa-play mr-1"></i> YouTube
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <button onclick="getDownload('mp4')" class="btn-primary w-full py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
+                            <i class="fas fa-video"></i> DOWNLOAD MP4 (HD)
+                        </button>
+                        <button onclick="getDownload('mp3')" class="btn-secondary w-full py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
+                            <i class="fas fa-music"></i> DOWNLOAD MP3 (Audio)
+                        </button>
+                    </div>
+                    <p class="text-center text-gray-400 text-sm mt-6">
+                        <i class="fas fa-info-circle mr-1"></i> Click button will open download page
+                    </p>
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="text-center p-6 glass-card rounded-2xl">
+                    <div class="feature-icon mx-auto mb-4">
+                        <i class="fas fa-hdd text-3xl text-red-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Multiple Formats</h3>
+                    <p class="text-gray-400">Download in MP4 (360p to 4K) and MP3 (64kbps to 320kbps) formats.</p>
+                </div>
+                
+                <div class="text-center p-6 glass-card rounded-2xl">
+                    <div class="feature-icon mx-auto mb-4">
+                        <i class="fas fa-bolt text-3xl text-yellow-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Fast Processing</h3>
+                    <p class="text-gray-400">No waiting time. Get download links within seconds.</p>
+                </div>
+                
+                <div class="text-center p-6 glasscard rounded-2xl">
+                    <div class="feature-icon mx-auto mb-4">
+                        <i class="fas fa-mobile-alt text-3xl text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Mobile Friendly</h3>
+                    <p class="text-gray-400">Works perfectly on all devices - Android, iOS, PC, Mac.</p>
+                </div>
+            </div>
+
+            <!-- How to Use -->
+            <div class="mt-16 max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-10">How to Download <span class="text-red-500">YouTube Videos</span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="bg-red-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+                        <p class="font-medium">Copy YouTube URL</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-red-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+                        <p class="font-medium">Paste in the box</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-red-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+                        <p class="font-medium">Choose MP4/MP3</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-red-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
+                        <p class="font-medium">Download & Enjoy</p>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer class="p-10 text-center text-slate-500 text-xs uppercase tracking-widest font-bold">
-        &copy; 2026 STREAMSAVER PRO | GLOBAL SERVICE
+    <!-- Footer -->
+    <footer class="py-10 border-t border-white/10">
+        <div class="container mx-auto max-w-6xl px-4">
+            <div class="text-center">
+                <!-- Logo in Footer -->
+                <div class="flex items-center justify-center gap-3 mb-6">
+                    <div class="bg-red-600 p-2 rounded-lg">
+                        <i class="fab fa-youtube text-white text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-black">StreamSaver <span class="text-red-500">Pro</span></h2>
+                </div>
+                
+                <!-- Description -->
+                <p class="text-gray-400 max-w-2xl mx-auto mb-8">
+                    StreamSaver Pro is a free online YouTube video downloader. We help you save YouTube videos, shorts, and music to your device for offline viewing. No software installation required.
+                </p>
+                
+                <!-- Links -->
+                <div class="flex flex-wrap justify-center gap-8 mb-8">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Contact</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">FAQ</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">DMCA</a>
+                </div>
+                
+                <!-- Copyright -->
+                <div class="border-t border-white/10 pt-8">
+                    <p class="text-gray-500 text-sm uppercase tracking-widest font-bold">
+                        <i class="fas fa-copyright mr-2"></i> 2026 StreamSaver Pro. All Rights Reserved.
+                    </p>
+                    <p class="text-gray-600 text-xs mt-2">
+                        This tool complies with YouTube's Terms of Service. Download videos for personal use only.
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
 
+    <!-- JavaScript -->
     <script>
         let currentVideoId = "";
 
         function analyzeLink() {
-            const url = document.getElementById('videoUrl').value.trim();
+            const urlInput = document.getElementById('videoUrl');
+            const url = urlInput.value.trim();
+            const errorBox = document.getElementById('errorBox');
+            const errorText = document.getElementById('errorText');
+            const resultCard = document.getElementById('resultCard');
+            
+            // Reset
+            errorBox.classList.add('hidden');
+            resultCard.classList.add('hidden');
+            
+            if (!url) {
+                errorText.textContent = "Please paste a YouTube link in the box above.";
+                errorBox.classList.remove('hidden');
+                urlInput.focus();
+                return;
+            }
+            
+            // Enhanced YouTube URL regex (supports all formats)
             const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?|shorts)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
             const match = url.match(regex);
-
+            
             if (match && match[1]) {
                 currentVideoId = match[1];
-                document.getElementById('errorBox').classList.add('hidden');
-                document.getElementById('thumb').src = `https://img.youtube.com/vi/${currentVideoId}/maxresdefault.jpg`;
-                document.getElementById('resultCard').classList.remove('hidden');
-                document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth' });
+                
+                // Show thumbnail
+                const thumb = document.getElementById('thumb');
+                thumb.src = `https://img.youtube.com/vi/${currentVideoId}/maxresdefault.jpg`;
+                thumb.onerror = function() {
+                    this.src = `https://img.youtube.com/vi/${currentVideoId}/hqdefault.jpg`;
+                };
+                
+                // Show result card with animation
+                resultCard.classList.remove('hidden');
+                resultCard.style.opacity = '0';
+                resultCard.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    resultCard.style.transition = 'all 0.5s ease';
+                    resultCard.style.opacity = '1';
+                    resultCard.style.transform = 'translateY(0)';
+                }, 50);
+                
+                // Smooth scroll to result
+                resultCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Clear error if any
+                errorBox.classList.add('hidden');
             } else {
-                document.getElementById('errorBox').innerText = "Error: Please paste a valid YouTube or Shorts link.";
-                document.getElementById('errorBox').classList.remove('hidden');
-                document.getElementById('resultCard').classList.add('hidden');
+                errorText.textContent = "Invalid YouTube URL. Please check and paste again. Supported: youtube.com, youtu.be, shorts links.";
+                errorBox.classList.remove('hidden');
+                resultCard.classList.add('hidden');
             }
         }
 
         function getDownload(type) {
-            // Humne yahan direct working API use ki hai jo bina download.js ke chalegi
-            const apiUrl = type === 'mp4' 
-                ? `https://api.vevioz.com/@api/button/videos/${currentVideoId}` 
-                : `https://api.vevioz.com/@api/button/mp3/${currentVideoId}`;
+            if (!currentVideoId) {
+                alert("Please analyze a video link first.");
+                return;
+            }
             
-            window.open(apiUrl, '_blank');
+            // List of backup APIs (if one fails, we have others)
+            const apiList = {
+                mp4: [
+                    `https://api.vevioz.com/@api/button/videos/${currentVideoId}`,
+                    `https://yt-download.org/api/button/videos/${currentVideoId}`,
+                    `https://youtube.mahan.workers.dev/download?videoId=${currentVideoId}`
+                ],
+                mp3: [
+                    `https://api.vevioz.com/@api/button/mp3/${currentVideoId}`,
+                    `https://yt-download.org/api/button/mp3/${currentVideoId}`,
+                    `https://youtube.mahan.workers.dev/download?videoId=${currentVideoId}&type=mp3`
+                ]
+            };
+            
+            // Use first API in the list
+            const downloadUrl = apiList[type][0];
+            
+            // Open download page in new tab
+            const newTab = window.open(downloadUrl, '_blank');
+            
+            // Fallback if popup blocked
+            if (!newTab || newTab.closed || typeof newTab.closed == 'undefined') {
+                window.location.href = downloadUrl;
+            }
         }
+
+        // Allow pressing Enter in input field
+        document.getElementById('videoUrl').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                analyzeLink();
+            }
+        });
+
+        // Auto-focus on input when page loads
+        window.onload = function() {
+            document.getElementById('videoUrl').focus();
+        };
     </script>
 </body>
 </html>
