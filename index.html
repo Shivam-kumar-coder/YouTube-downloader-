@@ -3,202 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Video Downloader - Free HD MP4 MP3 Download | VidSave</title>
-    
+    <title>YTDownloader Pro | Fast YouTube Video Downloader - MP4 MP3 Free</title>
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Free YouTube video downloader. Download videos in MP4 HD and MP3 audio format instantly. No registration required.">
-    <meta name="keywords" content="youtube downloader, youtube to mp3, youtube to mp4, free video download">
-    <meta name="author" content="VidSave">
-    
+    <meta name="description" content="Download YouTube videos instantly in MP4 and MP3 format. No waiting, fast downloads, HD quality, completely free.">
+    <meta name="keywords" content="youtube downloader, youtube to mp3, youtube to mp4, download youtube videos, free video downloader">
+    <meta name="author" content="YTDownloader Pro">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: #0f0f0f;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
             color: white;
         }
-        .hero-bg {
-            background: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+        .gradient-bg {
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
         }
-        .card {
-            background: rgba(30, 30, 30, 0.9);
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
         }
-        .btn-red {
-            background: linear-gradient(90deg, #ff0000, #cc0000);
-            transition: all 0.3s;
+        .download-btn {
+            background: linear-gradient(90deg, #ff0000, #ff3333);
+            transition: all 0.3s ease;
         }
-        .btn-red:hover {
+        .download-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3);
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
         }
-        .btn-outline {
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s;
+        .pulse-animation {
+            animation: pulse 2s infinite;
         }
-        .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-        .quality-badge {
-            background: rgba(0, 200, 0, 0.2);
-            border: 1px solid rgba(0, 200, 0, 0.4);
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
     </style>
+
+    <!-- Google Adsense (अपना code लगाना) -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
 </head>
 <body class="min-h-screen">
 
     <!-- Header -->
-    <header class="py-5 px-4 border-b border-gray-800">
+    <header class="py-6 px-4 border-b border-gray-800">
         <div class="container mx-auto max-w-6xl flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="hero-bg p-3 rounded-xl">
+                <div class="gradient-bg p-3 rounded-xl">
                     <i class="fab fa-youtube text-white text-2xl"></i>
                 </div>
                 <div>
-                    <h1 class="text-2xl font-black">Vid<span class="text-red-500">Save</span></h1>
-                    <p class="text-xs text-gray-400">Real YouTube Downloader</p>
+                    <h1 class="text-2xl font-black">YTDownloader <span class="text-red-500">Pro</span></h1>
+                    <p class="text-xs text-gray-400">Fast & Free YouTube Downloader</p>
                 </div>
             </div>
-            
-            <div class="text-right">
-                <p class="text-sm text-green-400">
-                    <i class="fas fa-check-circle mr-1"></i> 100% Working
-                </p>
-                <p class="text-xs text-gray-400">No Fake Downloads</p>
+
+            <div class="hidden md:flex items-center gap-2">
+                <span class="px-3 py-1 bg-green-900/30 rounded-full text-xs">
+                    <i class="fas fa-bolt mr-1"></i> Instant Download
+                </span>
+                <span class="px-3 py-1 bg-blue-900/30 rounded-full text-xs">
+                    <i class="fas fa-shield-alt mr-1"></i> 100% Safe
+                </span>
             </div>
         </div>
     </header>
 
     <!-- Main Section -->
-    <main class="py-10 px-4">
-        <div class="container mx-auto max-w-4xl">
-            <!-- Hero -->
-            <div class="text-center mb-12">
-                <h1 class="text-4xl md:text-5xl font-black mb-6">
-                    Download YouTube Videos
-                    <br><span class="text-red-500">That Actually Work</span>
-                </h1>
-                <p class="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-                    No fake promises. Real downloads that start immediately.
-                </p>
-            </div>
+    <main class="py-12 px-4">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h1 class="text-4xl md:text-5xl font-black mb-6">
+                Download <span class="text-red-500">YouTube Videos</span>
+                <br><span class="text-3xl md:text-4xl text-gray-300">In One Click</span>
+            </h1>
 
-            <!-- Input Box -->
-            <div class="card p-2 mb-8 max-w-3xl mx-auto">
+            <p class="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
+                No waiting, no redirects. Paste link and download instantly in MP4 or MP3 format.
+            </p>
+
+            <!-- Download Box -->
+            <div class="glass-card p-2 rounded-2xl mb-8 max-w-3xl mx-auto">
                 <div class="flex flex-col md:flex-row gap-3">
                     <input 
                         type="text" 
                         id="videoUrl"
-                        placeholder="Paste YouTube URL here..."
+                        placeholder="Paste YouTube video URL here..."
                         class="flex-1 bg-gray-900 border border-gray-700 p-4 rounded-xl text-white outline-none focus:border-red-500"
-                        value="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                        value="https://youtu.be/dQw4w9WgXcQ"
                     >
                     <button 
-                        onclick="getVideoInfo()"
-                        class="btn-red px-8 py-4 rounded-xl font-bold text-lg"
+                        onclick="analyzeVideo()"
+                        class="download-btn px-8 py-4 rounded-xl font-bold text-lg pulse-animation"
                     >
-                        <i class="fas fa-search mr-2"></i> GET VIDEO
+                        <i class="fas fa-download mr-2"></i> DOWNLOAD NOW
                     </button>
                 </div>
             </div>
 
+            <!-- Quick Stats -->
+            <div class="flex flex-wrap justify-center gap-6 mb-12">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-red-500">1M+</div>
+                    <div class="text-gray-400 text-sm">Downloads</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-red-500">99%</div>
+                    <div class="text-gray-400 text-sm">Success Rate</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-red-500">0s</div>
+                    <div class="text-gray-400 text-sm">Waiting Time</div>
+                </div>
+            </div>
+
             <!-- Results -->
-            <div id="results" class="hidden mt-10">
-                <div class="card p-8 max-w-2xl mx-auto">
-                    <div class="mb-8">
-                        <h3 class="text-2xl font-bold mb-4">Choose Download Method:</h3>
-                        <p class="text-gray-400 mb-6">
-                            We provide multiple working methods. If one doesn't work, try another.
-                        </p>
-                    </div>
-
-                    <!-- Method 1: Direct Working APIs -->
-                    <div class="mb-10">
-                        <h4 class="text-lg font-bold mb-4 flex items-center">
-                            <span class="bg-green-600 text-white px-3 py-1 rounded-lg mr-3">Method 1</span>
-                            Fast Direct Download
-                        </h4>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                            <button onclick="downloadDirect('mp4', '720p')" class="btn-red p-5 rounded-xl text-left">
-                                <div class="flex justify-between items-center">
-                                    <div>
-                                        <p class="font-bold text-lg">MP4 HD Video</p>
-                                        <p class="text-sm text-gray-300">720p • Direct Download</p>
-                                    </div>
-                                    <i class="fas fa-download text-2xl"></i>
-                                </div>
-                            </button>
-                            
-                            <button onclick="downloadDirect('mp3', '320kbps')" class="btn-red p-5 rounded-xl text-left">
-                                <div class="flex justify-between items-center">
-                                    <div>
-                                        <p class="font-bold text-lg">MP3 Audio</p>
-                                        <p class="text-sm text-gray-300">320kbps • Best Quality</p>
-                                    </div>
-                                    <i class="fas fa-music text-2xl"></i>
-                                </div>
-                            </button>
+            <div id="results" class="hidden mt-12">
+                <div class="glass-card p-8 rounded-3xl max-w-2xl mx-auto">
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <!-- Thumbnail -->
+                        <div class="md:w-1/3">
+                            <img id="videoThumb" class="w-full rounded-xl shadow-2xl" src="" alt="Video Thumbnail">
                         </div>
-                        
-                        <p class="text-sm text-gray-500">
-                            <i class="fas fa-info-circle mr-2"></i> Opens download page. Follow on-screen instructions.
-                        </p>
-                    </div>
 
-                    <!-- Method 2: Alternative Services -->
-                    <div class="mb-10">
-                        <h4 class="text-lg font-bold mb-4 flex items-center">
-                            <span class="bg-blue-600 text-white px-3 py-1 rounded-lg mr-3">Method 2</span>
-                            Reliable Alternative Services
-                        </h4>
-                        
-                        <div class="space-y-4">
-                            <button onclick="openService('y2mate')" class="w-full btn-outline p-4 rounded-xl flex items-center justify-between">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-red-500 text-xl">▶️</span>
-                                    <div>
-                                        <p class="font-bold">Y2Mate Downloader</p>
-                                        <p class="text-sm text-gray-400">Most reliable service</p>
-                                    </div>
-                                </div>
-                                <i class="fas fa-external-link-alt"></i>
-                            </button>
-                            
-                            <button onclick="openService('ssyoutube')" class="w-full btn-outline p-4 rounded-xl flex items-center justify-between">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-blue-500 text-xl">💾</span>
-                                    <div>
-                                        <p class="font-bold">SSYouTube</p>
-                                        <p class="text-sm text-gray-400">Fast & simple interface</p>
-                                    </div>
-                                </div>
-                                <i class="fas fa-external-link-alt"></i>
-                            </button>
-                            
-                            <button onclick="openService('yt5s')" class="w-full btn-outline p-4 rounded-xl flex items-center justify-between">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-green-500 text-xl">⚡</span>
-                                    <div>
-                                        <p class="font-bold">YT5s Converter</p>
-                                        <p class="text-sm text-gray-400">Multiple format options</p>
-                                    </div>
-                                </div>
-                                <i class="fas fa-external-link-alt"></i>
-                            </button>
+                        <!-- Download Options -->
+                        <div class="md:w-2/3">
+                            <h3 id="videoTitle" class="text-xl font-bold mb-6 text-left"></h3>
+
+                            <div class="space-y-4">
+                                <button onclick="downloadVideo('mp4', '720p')" class="download-btn w-full p-4 rounded-xl text-lg font-bold">
+                                    <i class="fas fa-video mr-3"></i> DOWNLOAD MP4 (720p HD)
+                                </button>
+
+                                <button onclick="downloadVideo('mp4', '360p')" class="w-full p-4 rounded-xl font-bold border-2 border-gray-700 hover:bg-gray-800 transition">
+                                    <i class="fas fa-video mr-3"></i> DOWNLOAD MP4 (360p)
+                                </button>
+
+                                <button onclick="downloadVideo('mp3', '128kbps')" class="download-btn w-full p-4 rounded-xl text-lg font-bold">
+                                    <i class="fas fa-music mr-3"></i> DOWNLOAD MP3 (Audio)
+                                </button>
+                            </div>
+
+                            <p class="text-gray-400 text-sm mt-6">
+                                <i class="fas fa-info-circle mr-2"></i> Download will start immediately in your browser
+                            </p>
                         </div>
                     </div>
 
-                    <!-- Ads Space -->
-                    <div class="mt-8 p-6 bg-gray-900 rounded-xl text-center">
-                        <p class="text-gray-400 text-sm mb-3">Advertisement</p>
+                    <!-- Ad Space -->
+                    <div class="mt-8 p-4 bg-gray-900 rounded-xl text-center">
+                        <p class="text-gray-400 text-sm mb-2">Advertisement</p>
                         <div class="h-[100px] bg-gray-800 rounded-lg flex items-center justify-center">
-                            <p class="text-gray-500">Google AdSense Space</p>
+                            <p class="text-gray-500">Ad Space (Responsive)</p>
                         </div>
                     </div>
                 </div>
@@ -206,222 +168,229 @@
 
             <!-- Features -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-                <div class="card p-6 text-center">
+                <div class="glass-card p-6 rounded-2xl">
                     <div class="text-red-500 text-3xl mb-4">
                         <i class="fas fa-bolt"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Real Downloads</h3>
-                    <p class="text-gray-400">No fake promises. We only show working methods.</p>
+                    <h3 class="text-xl font-bold mb-3">Instant Download</h3>
+                    <p class="text-gray-400">No waiting time. Download starts immediately after clicking.</p>
                 </div>
-                
-                <div class="card p-6 text-center">
+
+                <div class="glass-card p-6 rounded-2xl">
                     <div class="text-red-500 text-3xl mb-4">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-lock"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">No Malware</h3>
-                    <p class="text-gray-400">All services are tested and safe to use.</p>
+                    <h3 class="text-xl font-bold mb-3">No Redirects</h3>
+                    <p class="text-gray-400">Direct download links. No annoying redirect pages.</p>
                 </div>
-                
-                <div class="card p-6 text-center">
+
+                <div class="glass-card p-6 rounded-2xl">
                     <div class="text-red-500 text-3xl mb-4">
-                        <i class="fas fa-sync-alt"></i>
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Always Updated</h3>
-                    <p class="text-gray-400">We update links regularly to ensure they work.</p>
+                    <h3 class="text-xl font-bold mb-3">All Devices</h3>
+                    <p class="text-gray-400">Works perfectly on PC, Android, iPhone, and Tablet.</p>
                 </div>
             </div>
         </div>
     </main>
 
+    <!-- How To Section -->
+    <section class="py-12 px-4 bg-gray-900 mt-12">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl font-bold text-center mb-10">How to Download in 10 Seconds</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
+                    <h3 class="font-bold mb-2">Copy YouTube Link</h3>
+                    <p class="text-gray-400">Go to YouTube and copy video URL from address bar</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
+                    <h3 class="font-bold mb-2">Paste & Analyze</h3>
+                    <p class="text-gray-400">Paste link above and click Download Now button</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
+                    <h3 class="font-bold mb-2">Download Instantly</h3>
+                    <p class="text-gray-400">Choose MP4 or MP3 and download starts immediately</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer class="py-12 px-4 border-t border-gray-800 mt-12">
+    <footer class="py-12 px-4 border-t border-gray-800">
         <div class="container mx-auto max-w-4xl text-center">
-            <h2 class="text-2xl font-bold mb-6">Vid<span class="text-red-500">Save</span></h2>
+            <div class="flex items-center justify-center gap-3 mb-6">
+                <div class="gradient-bg p-3 rounded-xl">
+                    <i class="fab fa-youtube text-white text-2xl"></i>
+                </div>
+                <h2 class="text-2xl font-black">
+                    YTDownloader <span class="text-red-500">Pro</span>
+                </h2>
+            </div>
+
             <p class="text-gray-400 mb-8 max-w-2xl mx-auto">
-                Honest YouTube downloader. We don't fake downloads. We redirect to real working services.
+                Free YouTube video downloader. Download videos for personal use only. Respect copyright laws.
             </p>
-            
+
             <div class="flex flex-wrap justify-center gap-6 mb-8">
                 <a href="#" class="text-gray-400 hover:text-white">Terms</a>
                 <a href="#" class="text-gray-400 hover:text-white">Privacy</a>
                 <a href="#" class="text-gray-400 hover:text-white">DMCA</a>
                 <a href="#" class="text-gray-400 hover:text-white">Contact</a>
+                <a href="#" class="text-gray-400 hover:text-white">FAQ</a>
             </div>
-            
+
             <p class="text-gray-500 text-sm">
-                © 2026 VidSave. We are not affiliated with YouTube.
+                © 2024 YTDownloader Pro. This tool is not affiliated with YouTube.
             </p>
         </div>
     </footer>
 
     <!-- JavaScript -->
     <script>
-        // WORKING DOWNLOAD SERVICES (Updated Jan 2026)
-        const WORKING_SERVICES = {
-            // Current working domains (tested)
-            y2mate: (videoId) => `https://www.y2mate.com/youtube/${videoId}`,
-            ssyoutube: (videoId) => `https://ssyoutube.com/watch?v=${videoId}`,
-            yt5s: (videoId) => `https://yt5s.com/en?q=https://youtube.com/watch?v=${videoId}`,
-            y2mate_mp3: (videoId) => `https://www.y2mate.com/youtube-mp3/${videoId}`,
-            
-            // Alternative working services
-            loader: (videoId) => `https://loader.to/en20/download-youtube-video.html?v=${videoId}`,
-            onlinevideoconverter: (videoId) => `https://onlinevideoconverter.pro/video-downloader/youtube?url=https://youtube.com/watch?v=${videoId}`
-        };
-
         let currentVideoId = '';
 
-        function getVideoInfo() {
+        function analyzeVideo() {
             const urlInput = document.getElementById('videoUrl');
             let url = urlInput.value.trim();
-            
+
             if (!url) {
                 alert('Please paste a YouTube URL');
                 return;
             }
-            
+
+            // If user doesn't enter URL, use default
+            if (url === '') {
+                url = 'https://youtu.be/dQw4w9WgXcQ';
+                urlInput.value = url;
+            }
+
             // Extract video ID
             const videoId = extractVideoId(url);
             if (!videoId) {
                 alert('Invalid YouTube URL. Please check and try again.');
                 return;
             }
-            
+
             currentVideoId = videoId;
-            
-            // Show results
+
+            // Show thumbnail immediately
+            const thumb = document.getElementById('videoThumb');
+            thumb.src = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+
+            // Show video title
+            document.getElementById('videoTitle').textContent = 'YouTube Video Ready to Download';
+
+            // Show results section
             document.getElementById('results').classList.remove('hidden');
             document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
-            
-            // Show honest message
-            showMessage('Video ready! Choose a download method below.', 'info');
+
+            // Show success message
+            showNotification('Video ready! Click download button to start download.');
         }
 
         function extractVideoId(url) {
+            // Multiple URL patterns supported
             const patterns = [
                 /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?|shorts)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/,
                 /youtube\.com\/watch\?v=([^&]{11})/,
-                /youtu\.be\/([^?]{11})/
+                /youtu\.be\/([^?]{11})/,
+                /youtube\.com\/shorts\/([^?]{11})/
             ];
-            
+
             for (const pattern of patterns) {
                 const match = url.match(pattern);
-                if (match && match[1]) return match[1];
+                if (match && match[1]) {
+                    return match[1];
+                }
             }
             return null;
         }
 
-        // Method 1: Direct download (working services)
-        function downloadDirect(type, quality) {
+        async function downloadVideo(type, quality) {
             if (!currentVideoId) {
                 alert('Please analyze a video first');
                 return;
             }
-            
-            showMessage('Opening download service...', 'info');
-            
-            let url = '';
-            
-            if (type === 'mp4') {
-                // Multiple working MP4 services
-                const services = [
-                    `https://www.y2mate.com/youtube/${currentVideoId}`,
-                    `https://ssyoutube.com/watch?v=${currentVideoId}`,
-                    `https://yt5s.com/en?q=https://youtube.com/watch?v=${currentVideoId}`
-                ];
-                
-                url = services[0]; // Try Y2Mate first (most reliable)
-                
-            } else if (type === 'mp3') {
-                // Multiple working MP3 services
-                const services = [
-                    `https://www.y2mate.com/youtube-mp3/${currentVideoId}`,
-                    `https://ssyoutube.com/watch?v=${currentVideoId}`, // They have MP3 option
-                    `https://yt5s.com/en?q=https://youtube.com/watch?v=${currentVideoId}`
-                ];
-                
-                url = services[0];
-            }
-            
-            // Open in new tab
-            openNewTab(url);
-            
-            // Show tracking message
-            setTimeout(() => {
-                showMessage('If download doesn\'t start, try another method below', 'warning');
-            }, 2000);
-        }
 
-        // Method 2: Alternative services
-        function openService(serviceName) {
-            if (!currentVideoId) {
-                alert('Please analyze a video first');
-                return;
-            }
-            
-            let url = '';
-            
-            switch(serviceName) {
-                case 'y2mate':
-                    url = WORKING_SERVICES.y2mate(currentVideoId);
-                    break;
-                case 'ssyoutube':
-                    url = WORKING_SERVICES.ssyoutube(currentVideoId);
-                    break;
-                case 'yt5s':
-                    url = WORKING_SERVICES.yt5s(currentVideoId);
-                    break;
-                default:
-                    url = WORKING_SERVICES.y2mate(currentVideoId);
-            }
-            
-            showMessage(`Opening ${serviceName}...`, 'info');
-            openNewTab(url);
-        }
+            showNotification('Starting download... Please wait.');
 
-        function openNewTab(url) {
-            const newTab = window.open(url, '_blank');
-            if (!newTab || newTab.closed) {
-                // If popup blocked, ask user to click link
-                showMessage('Popup blocked! Please click here: <a href="' + url + '" target="_blank" class="underline">Open Download Page</a>', 'warning');
+            const params = new URLSearchParams({
+                videoId: currentVideoId,
+                type,
+                quality
+            });
+
+            try {
+                const response = await fetch(`/api/download?${params.toString()}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const blob = await response.blob();
+                const downloadUrl = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = downloadUrl;
+                a.download = type === 'mp3' ? `\( {currentVideoId}.mp3` : ` \){currentVideoId}.mp4`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(downloadUrl);
+
+                showNotification('Download started! Check your downloads.');
+            } catch (error) {
+                showNotification('Error downloading. Try again or check console.');
+                console.error('Download error:', error);
             }
         }
 
-        function showMessage(text, type = 'info') {
-            // Remove any existing message
-            const existingMsg = document.getElementById('customMessage');
-            if (existingMsg) existingMsg.remove();
-            
-            // Create message element
-            const message = document.createElement('div');
-            message.id = 'customMessage';
-            message.className = `fixed top-4 right-4 px-6 py-3 rounded-xl shadow-2xl z-50 max-w-md ${
-                type === 'info' ? 'bg-blue-600' : 
-                type === 'warning' ? 'bg-yellow-600' : 
-                'bg-green-600'
-            }`;
-            message.innerHTML = `
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-4 right-4 bg-green-600 text-white px-6 py-3 rounded-xl shadow-2xl z-50';
+            notification.innerHTML = `
                 <div class="flex items-center gap-3">
-                    <i class="fas fa-${type === 'info' ? 'info-circle' : type === 'warning' ? 'exclamation-triangle' : 'check-circle'}"></i>
-                    <span>${text}</span>
+                    <i class="fas fa-check-circle"></i>
+                    <span>${message}</span>
                 </div>
             `;
-            
-            document.body.appendChild(message);
-            
-            // Auto-remove after 5 seconds
+
+            document.body.appendChild(notification);
+
+            // Remove after 3 seconds
             setTimeout(() => {
-                if (message.parentNode) {
-                    message.parentNode.removeChild(message);
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
                 }
-            }, 5000);
+            }, 3000);
         }
 
-        // Auto-focus and allow Enter key
-        document.getElementById('videoUrl').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') getVideoInfo();
+        // Auto-detect URL in clipboard
+        document.getElementById('videoUrl').addEventListener('focus', function() {
+            // Try to paste from clipboard automatically
+            navigator.clipboard.readText().then(text => {
+                if (text.includes('youtube.com') || text.includes('youtu.be')) {
+                    this.value = text;
+                }
+            }).catch(() => {
+                // Clipboard access not granted, ignore
+            });
         });
-        
+
+        // Allow Enter key
+        document.getElementById('videoUrl').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                analyzeVideo();
+            }
+        });
+
+        // Initialize with example URL
         window.onload = function() {
             document.getElementById('videoUrl').focus();
         };
