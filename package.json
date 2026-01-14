@@ -6,7 +6,19 @@
   "scripts": {
     "start": "echo 'Open index.html in browser'"
   },
-  "keywords": ["youtube", "downloader", "instant", "mp3", "mp4"],
+  "keywords": [
+    "youtube",
+    "downloader",
+    "instant",
+    "mp3",
+    "mp4"
+  ],
   "author": "YTDownloader Pro",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "@ffprobe-installer/ffprobe": "^2.1.2",
+    "fluent-ffmpeg": "^2.1.2",
+    "ytdl-core": "^4.14.4"
+  }
 }
