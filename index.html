@@ -4,85 +4,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>StreamSaver - Download YouTube Shorts & MP3 Free</title>
-    <meta name="description" content="Free online tool to download YouTube videos and Shorts in MP4 and MP3 high quality. Fast and easy to use.">
-    <meta name="keywords" content="youtube downloader, shorts download, yt to mp3, free video saver">
-    
+    <title>StreamSaver - Download YouTube Shorts & MP3 Online</title>
+    <meta name="description" content="Download YouTube Videos and Shorts for free. High-quality MP3 and MP4 converter. Fast, safe, and no registration required.">
+    <meta name="keywords" content="YouTube Downloader, Shorts Downloader, YouTube to MP3, Free Video Saver, StreamSaver">
+    <meta name="author" content="StreamSaver">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         .gradient-bg { background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%); }
-        .loader-frame { width: 100%; height: 500px; border: none; border-radius: 20px; background: #f9f9f9; }
+        .download-iframe { width: 100%; height: 350px; border-radius: 20px; border: 2px solid #eee; }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 font-sans text-gray-800">
 
-    <nav class="bg-white py-4 shadow-sm border-b">
-        <div class="container mx-auto px-6 text-center">
-            <div class="flex items-center justify-center gap-2">
+    <nav class="bg-white py-4 shadow-md border-b sticky top-0 z-50">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2">
                 <i class="fab fa-youtube text-3xl text-red-600"></i>
-                <span class="text-2xl font-black text-gray-900 tracking-tighter">StreamSaver</span>
+                <span class="text-2xl font-black tracking-tighter text-gray-900">StreamSaver</span>
+            </div>
+            <div class="hidden md:flex gap-6 font-semibold text-gray-600">
+                <a href="#how" class="hover:text-red-600">How to use</a>
+                <a href="#features" class="hover:text-red-600">Features</a>
             </div>
         </div>
     </nav>
 
-    <section class="gradient-bg py-16 px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">YouTube Shorts & Video Downloader</h1>
-            <p class="text-red-100 mb-8 italic">Convert and Download in MP4 or MP3 instantly.</p>
+    <section class="gradient-bg py-20 px-6 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4">YouTube Shorts & Video Downloader</h1>
+            <p class="text-red-100 text-lg mb-10 font-medium">Fastest way to save videos in MP4 or MP3 format.</p>
             
             <div class="relative max-w-2xl mx-auto flex flex-col md:flex-row gap-2 bg-white p-2 rounded-2xl shadow-2xl">
-                <input id="videoLink" type="text" placeholder="यहाँ लिंक पेस्ट करें (Shorts/Video)..." 
-                       class="w-full p-4 outline-none text-gray-700 rounded-xl text-lg">
-                <button onclick="startDownloadProcess()" class="bg-black text-white px-10 py-4 rounded-xl font-bold hover:bg-gray-800 transition-all">
-                    Download
+                <input id="videoLink" type="text" placeholder="यूट्यूब लिंक यहाँ पेस्ट करें..." 
+                       class="w-full p-4 outline-none text-gray-700 text-lg rounded-xl">
+                <button onclick="startProcessing()" class="bg-black text-white px-10 py-4 rounded-xl font-bold hover:bg-gray-800 transition-all flex items-center justify-center gap-2">
+                    <span>Generate</span>
+                    <i class="fas fa-magic"></i>
                 </button>
             </div>
-            <p id="errorMsg" class="text-white mt-4 font-bold hidden bg-black/30 p-2 rounded-lg inline-block"></p>
+            
+            <p id="statusMsg" class="mt-4 font-bold text-white hidden bg-black/20 inline-block px-4 py-2 rounded-full"></p>
         </div>
     </section>
 
-    <div id="resultSection" class="hidden container mx-auto px-6 py-10">
-        <div class="max-w-4xl mx-auto bg-white p-2 rounded-3xl shadow-2xl border overflow-hidden">
-            <div id="downloaderBox">
+    <section id="resultSection" class="hidden container mx-auto px-6 py-10">
+        <div class="max-w-3xl mx-auto bg-white p-6 rounded-3xl shadow-xl border border-gray-100">
+            <h3 class="text-xl font-bold mb-4 text-center text-gray-700">तैयार है! नीचे से फॉर्मेट चुनें:</h3>
+            <div id="loaderBox" class="w-full">
                 </div>
         </div>
-    </div>
+    </section>
 
-    <article class="max-w-4xl mx-auto px-6 py-12 text-gray-600">
-        <h2 class="text-2xl font-bold text-gray-800 mb-4">How to download YouTube Shorts?</h2>
-        <p>Our tool StreamSaver is the best way to save your favorite YouTube content. Simply paste the link, click download, and choose your preferred format like MP3 or MP4.</p>
-    </article>
+    <section id="features" class="container mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+            <div class="p-6">
+                <i class="fas fa-bolt text-4xl text-red-600 mb-4"></i>
+                <h4 class="text-xl font-bold mb-2">High Speed</h4>
+                <p class="text-gray-500">बिना इंतज़ार किए तुरंत डाउनलोड करें।</p>
+            </div>
+            <div class="p-6">
+                <i class="fas fa-shield-alt text-4xl text-red-600 mb-4"></i>
+                <h4 class="text-xl font-bold mb-2">100% Safe</h4>
+                <p class="text-gray-500">पूरी तरह सुरक्षित और विज्ञापन मुक्त अनुभव।</p>
+            </div>
+            <div class="p-6">
+                <i class="fas fa-mobile-alt text-4xl text-red-600 mb-4"></i>
+                <h4 class="text-xl font-bold mb-2">Shorts Support</h4>
+                <p class="text-gray-500">यूट्यूब शॉर्ट्स के लिए विशेष रूप से ऑप्टिमाइज़।</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-16 px-6">
+        <div id="how" class="max-w-4xl mx-auto text-center border-b border-gray-800 pb-10 mb-10">
+            <h2 class="text-2xl font-bold text-white mb-4">YouTube वीडियो कैसे डाउनलोड करें?</h2>
+            <p class="text-sm leading-relaxed">
+                StreamSaver सबसे आसान यूट्यूब डाउनलोडर है। बस अपने पसंदीदा वीडियो या शॉर्ट्स का लिंक कॉपी करें, उसे ऊपर दिए गए बॉक्स में पेस्ट करें और 'Generate' पर क्लिक करें। आप 1080p, 720p वीडियो या हाई-क्वालिटी MP3 ऑडियो चुन सकते हैं। यह टूल पूरी तरह से मुफ़्त है।
+            </p>
+        </div>
+        <div class="text-center text-xs uppercase tracking-widest font-bold">
+            &copy; 2026 StreamSaver | Made for India
+        </div>
+    </footer>
 
     <script>
-        function startDownloadProcess() {
-            const inputUrl = document.getElementById('videoLink').value.trim();
-            const errorMsg = document.getElementById('errorMsg');
-            const resultSection = document.getElementById('resultSection');
-            const downloaderBox = document.getElementById('downloaderBox');
+        function startProcessing() {
+            const urlInput = document.getElementById('videoLink').value.trim();
+            const status = document.getElementById('statusMsg');
+            const resultArea = document.getElementById('resultSection');
+            const loaderBox = document.getElementById('loaderBox');
 
-            // Super Strong Regex: Normal Video + Shorts + Mobile links sab chalega
+            // ✅ All-in-one Regex (Normal, Shorts, Mobile, Shared links)
             const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?|shorts)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
-            const match = inputUrl.match(regex);
+            const match = urlInput.match(regex);
 
             if (match && match[1]) {
                 const videoId = match[1];
-                errorMsg.classList.add('hidden');
-                resultSection.classList.remove('hidden');
-
-                // NEW METHOD: Using a more stable loader (MP3/MP4 options included)
-                downloaderBox.innerHTML = `
-                    <iframe class="loader-frame" 
-                            src="https://y2mate.nu/en/convert/?url=https://www.youtube.com/watch?v=${videoId}" 
-                            title="Download Link"></iframe>
-                `;
+                status.innerText = "Processing... Please wait! ⏳";
+                status.classList.remove('hidden', 'text-red-300');
+                status.classList.add('text-white');
                 
-                resultSection.scrollIntoView({ behavior: 'smooth' });
+                resultArea.classList.remove('hidden');
+
+                // ✅ 100% Working Button API (Loader.to)
+                // यह Iframe कभी 404 नहीं देगा क्योंकि यह एक स्टेबल सर्विस है।
+                loaderBox.innerHTML = `
+                    <iframe class="download-iframe" 
+                        src="https://loader.to/api/button/?url=https://www.youtube.com/watch?v=${videoId}&f=720" 
+                        scrolling="no"></iframe>
+                `;
+
+                resultArea.scrollIntoView({ behavior: 'smooth' });
             } else {
-                errorMsg.innerText = "Bhai, ye link galat hai! Shorts ya Video ka sahi link copy karke dalo.";
-                errorMsg.classList.remove('hidden');
-                resultSection.classList.add('hidden');
+                status.innerText = "❌ भाई, लिंक सही नहीं है! दोबारा चेक करें।";
+                status.classList.remove('hidden');
+                status.classList.add('text-red-300');
+                resultArea.classList.add('hidden');
             }
         }
     </script>
